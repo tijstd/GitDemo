@@ -9,10 +9,10 @@ on:
       - master      
 jobs:
   soSomething:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
     - name: checkout
       uses: actions/checkout@v2
     - run: ls
-    - run: azcopy copy ./* ${{secrets.STORAGE_ACCOUNT_SAS_TOKEN}}
+    - run: azcopy copy .\* ${{secrets.STORAGE_ACCOUNT_SAS_TOKEN}}
         
