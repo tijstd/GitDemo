@@ -11,6 +11,13 @@ jobs:
   soSomething:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - name: checkout
+      uses: actions/checkout@v2
     - run: ls
-    - run: azcopy copy .\* '${{secrets.STORAGE_ACCOUNT_SAS_TOKEN}}'
+    #- run: azcopy copy .\* '${{secrets.STORAGE_ACCOUNT_SAS_TOKEN}}'
+    - name: Deploy to Azure Storage
+      uses: TravisSpomer/deploy-to-azure-storage@v1.4.0
+      with:        
+        source-path: .     
+        sas-url: ${{secrets.STORAGE_ACCOUNT_SAS_TOKEN}}
+        
